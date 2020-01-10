@@ -28,6 +28,6 @@ class User(AbstractUser):
     CURRENCY_CHOICES = ((CURRENCY_USD, "USD"), (CURRENCY_KRW, "KRW"))
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, blank=True)
     birthday = models.DateField(null=True, blank=True)
-    avatar = models.ImageField(blank=True)
+    avatar = models.ImageField(upload_to="avatars", blank=True)
     bio = models.TextField(default="", blank=True)
     superhost = models.BooleanField(default=False)

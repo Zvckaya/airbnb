@@ -8,7 +8,10 @@ from . import models
 class ItemAdmin(admin.ModelAdmin):
     """item admin definition"""
 
-    pass
+    list_display = ("name", "used_by")
+
+    def used_by(self, obj):
+        return obj.rooms.count()
 
 
 @admin.register(models.Photo)
@@ -21,6 +24,25 @@ class RoomAdmin(admin.ModelAdmin):
 
     """ Room admin definition"""
 
+    fieldsets = (
+        (
+            "Basic Info",
+            {"fields": ("name", "description", "country", "city", "price", "address")},
+        ),
+        ("Times", {"fields": ("check_in", "check_out", "instant_book")}),
+        ("Spaces", {"fields": ("guest", "beds", "bedrooms", "baths")}),
+        (
+            "More About the Space",
+            {
+                "classes": ("collapse",),
+                "fields": ("amenities", "facilities", "house_rules"),
+            },
+        ),
+        ("Last Details", {"fields": ("host",)}),
+    )
+
+    ordering = ()
+
     list_display = (
         "name",
         "country",
@@ -31,6 +53,9 @@ class RoomAdmin(admin.ModelAdmin):
         "check_in",
         "check_out",
         "instant_book",
+        "count_amenities",
+        "count_photos",
+        "total_rating",
     )
 
     list_filter = (
@@ -52,3 +77,10 @@ class RoomAdmin(admin.ModelAdmin):
         "facilities",
         "house_rules",
     )
+
+    def count_amenities(self, obj):
+        return obj.amenities.count()
+
+    def count_photos(self, obj):
+        return obj.photos.count()
+
