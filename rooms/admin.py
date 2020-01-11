@@ -27,10 +27,17 @@ class PhotoAdmin(admin.ModelAdmin):
     get_thumnail.short_description = "Thumnail"
 
 
+class PhotoInine(admin.TabularInline):
+
+    model = models.Photo
+
+
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
 
     """ Room admin definition"""
+
+    inlines = (PhotoInine,)
 
     fieldsets = (
         (
@@ -80,11 +87,17 @@ class RoomAdmin(admin.ModelAdmin):
 
     search_fields = ("city", "^host__username")
 
+    raw_id_fields = ("host",)
+
     filter_horizontal = (
         "amenities",
         "facilities",
         "house_rules",
     )
+
+    def save_model(self, request, obj, form, change):
+        obj.user = request.user
+        super().save_model(request, obj, form, change)
 
     def count_amenities(self, obj):
         return obj.amenities.count()
