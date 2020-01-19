@@ -4,8 +4,8 @@
     "python.linting.enabled": true,
     "editor.formatOnSave": true,
     "python.formatting.provider": "black",
-    "python.pythonPath": "C:\\Users\\LZAKAYA\\.virtualenvs\\airbnb-project-xB8p3MXf\\Scripts\\python.exe",
     "python.linting.flake8Args": [
         "--max-line-length=88"
     ],
+    "python.pythonPath": "/Users/jaeheelee/.local/share/virtualenvs/airbnb-euoHJPM1",
 }
