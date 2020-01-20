@@ -1,0 +1,11 @@
+{
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.pythonPath": "C:\\Users\\LZAKAYA\\.virtualenvs\\airbnb-project-xB8p3MXf\\Scripts\\python.exe",
+    "python.linting.flake8Args": [
+        "--max-line-length=88"
+    ],
+}
