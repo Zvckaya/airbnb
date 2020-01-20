@@ -3,6 +3,9 @@ from rooms.models import Amenity
 
 
 class Command(BaseCommand):
+
+    help = "this command create amenities"
+
     def handle(self, *args, **options):
         amenities = [
             "bClean linens",

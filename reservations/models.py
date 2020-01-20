@@ -31,7 +31,7 @@ class Reservation(core_models.TimeStampedModel):
     )
 
     def __str__(self):
-        return f"{self.room}-{self.chech_in}"
+        return f"{self.room}-{self.check_in}"
 
     def in_progress(self):
         now = timezone.now().date()
